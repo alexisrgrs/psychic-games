@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Psychic Games</title>
+</head>
+<body>
+
+
+<p> Guess what letter I'm thinking of!</p>
+	
+	<div>
+	<h1 class="headH1"> The Psychic Game </h1>
+    </div>
+	
+			<p id="wins">Wins: 0</p>
+			<p id="losses">Losses: 0</p>
+			<p id="guessNum">Guesses Remaining: 10</p>		</div>
+		<div>
+		</div>
+		<div class="score">
+
+			
+		</div>
+	
+</div>
+
+	<script type="text/javascript">
+	var userGuess;
+	var wins = 0;
+	var losses = 0; 
+	var compChoice;
+	var alphabetArray = [ "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q","r", "s", "t", "u", "v", "w", "x", "y", "z"];
+	var guessNum = 10;
+	
+	compChoice = alphabetArray[Math.floor(Math.random() * alphabetArray.length)];
+	document.onkeyup = function (event) {
+		var userGuess = event.key;
+			
+			
+			if(guessNum === 0){
+				alert("You lost! Game over")
+				guessNum = 10
+				wins = 0
+				losses = 0 
+				document.getElementById("losses").innerHTML = "<p>Losses: 0</p>";
+				document.getElementById("guessNum").innerHTML = "<p>Guesses Remaining: 10</p>";
+				document.getElementById("wins").innerHTML = "<p>Wins: 0</p>";}
+				
+				else if(userGuess === compChoice){
+				alert("You're Right")
+				compChoice = alphabetArray[Math.floor(Math.random() * alphabetArray.length)];
+				wins++
+				
+		
+				document.getElementById("wins").innerHTML = "<p>Wins: " + wins + "</p>";
+				console.log(wins)}
+				
+				else {
+				alert("Try Again");
+				losses++
+				document.getElementById("losses").innerHTML = "<p>Losses: " + losses + "</p>";
+				console.log(losses)
+				guessNum--
+				document.getElementById("guessNum").innerHTML = "<p>Guesses Remaining: " + guessNum + "</p>"
+			
+			}
+	}
+	</script>
+
+</body>
+</html>
